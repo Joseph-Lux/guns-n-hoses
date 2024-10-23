@@ -39,11 +39,14 @@ const WinningNumber: React.FC<WinningNumberProps> = ({
               return newFinished;
             });
           }}
-          rotations={index + 1}
+          rotations={index * 2 + 2}
           finalNumber={parseInt(finalNumber[index])}
           finished={finished[index]}
         />
       ))}
+      {!raffleFinished && <audio src="/clicker.mp3" autoPlay loop />}
+      {!raffleFinished && <audio src="/clicker.mp3" autoPlay loop />}
+      {!raffleFinished && <audio src="/clicker.mp3" autoPlay loop />}
     </div>
   );
 };

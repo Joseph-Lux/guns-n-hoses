@@ -8,11 +8,17 @@ interface WinnerProps {
 
 const Winner: React.FC<WinnerProps> = ({ winningName, raffleFinished }) => {
   const [display, setDisplay] = useState(false);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    setAudio(new Audio("/win.wav"));
+  }, []);
 
   useEffect(() => {
     if (raffleFinished) {
       setTimeout(() => {
         setDisplay(true);
+        audio?.play();
       }, 1000);
     } else {
       setDisplay(false);

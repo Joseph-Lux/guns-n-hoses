@@ -18,6 +18,11 @@ const Digit: React.FC<DigitProps> = ({
   const [index, setIndex] = useState(0);
   const rotationCount = useRef(0);
   const positions = ["top", "center", "bottom"] as const;
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    setAudio(new Audio("/boxing-bell.mp3"));
+  }, []);
 
   useEffect(() => {
     if (!finished) {
@@ -43,6 +48,7 @@ const Digit: React.FC<DigitProps> = ({
 
           if (rotationCount.current === totalRotations) {
             setFinished(true);
+            audio?.play();
           }
         }, 50); // Duration of the animation
       }, 75); // Delay between animations
