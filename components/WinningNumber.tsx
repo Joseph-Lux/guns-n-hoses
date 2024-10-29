@@ -5,12 +5,14 @@ interface WinningNumberProps {
   finalNumber: string;
   raffleFinished: boolean;
   setRaffleFinished: (value: boolean) => void;
+  countdown: number;
 }
 
 const WinningNumber: React.FC<WinningNumberProps> = ({
   finalNumber,
   raffleFinished,
   setRaffleFinished,
+  countdown,
 }) => {
   const [digits, setDigits] = useState<number[]>([]);
   const [finished, setFinished] = useState<boolean[]>(Array(9).fill(false));
@@ -25,7 +27,13 @@ const WinningNumber: React.FC<WinningNumberProps> = ({
   }, [finalNumber, raffleFinished]);
 
   return (
-    <div className="flex space-x-2 p-4 bg-white rounded-xl shadow-lg">
+    <div
+      className={`flex space-x-2 p-4 bg-white rounded-xl shadow-lg ${
+        countdown > 0
+          ? "opacity-0"
+          : "opacity-100 transition-opacity duration-1000"
+      }`}
+    >
       {digits.map((digit, index) => (
         <Digit
           key={index}
@@ -39,14 +47,14 @@ const WinningNumber: React.FC<WinningNumberProps> = ({
               return newFinished;
             });
           }}
-          rotations={index * 2 + 2}
+          rotations={finalNumber === "000000000" ? 0 : index * 2 + 2}
           finalNumber={parseInt(finalNumber[index])}
           finished={finished[index]}
         />
       ))}
-      {!raffleFinished && <audio src="/clicker.mp3" autoPlay loop />}
-      {!raffleFinished && <audio src="/clicker.mp3" autoPlay loop />}
-      {!raffleFinished && <audio src="/clicker.mp3" autoPlay loop />}
+      {!raffleFinished && finalNumber !== "000000000" && (
+        <audio src="/clicker.mp3" autoPlay loop />
+      )}
     </div>
   );
 };

@@ -5,6 +5,7 @@ interface RaffleButtonProps {
   raffleFinished: boolean;
   setRaffleFinished: (value: boolean) => void;
   setWinningName: (value: string) => void;
+  setCountdown: (value: number) => void;
 }
 
 // https://goraisedough.com/cgi-bin/1_reset_drawing.cgi
@@ -16,21 +17,28 @@ const RaffleButton: React.FC<RaffleButtonProps> = ({
   raffleFinished,
   setRaffleFinished,
   setWinningName,
+  setCountdown,
 }) => {
   const generateNewRaffle = () => {
-    const newNumber = Array.from({ length: 9 }, () =>
-      Math.floor(Math.random() * 10)
-    ).join("");
-    console.log("New raffle number:", newNumber);
-    onNewRaffle(newNumber);
+    setCountdown(10);
+    onNewRaffle("000000000");
     setRaffleFinished(false);
+    setTimeout(() => {
+      const newNumber = Array.from({ length: 9 }, () =>
+        Math.floor(Math.random() * 10)
+      ).join("");
+      console.log("New raffle number:", newNumber);
+      onNewRaffle(newNumber);
+      setWinningName("");
+      setRaffleFinished(false);
+    }, 11500);
   };
 
   const callUrl = async (url: string) => {
     try {
       const proxyUrl =
         process.env.NODE_ENV === "development"
-          ? `/api/proxy?url=${encodeURIComponent(url)}`
+          ? `/api/ukonProxy?url=${encodeURIComponent(url)}`
           : url;
       const response = await fetch(proxyUrl);
       if (!response.ok) {
@@ -54,7 +62,7 @@ const RaffleButton: React.FC<RaffleButtonProps> = ({
   };
 
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col space-y-2 w-96">
       <button
         onClick={generateNewRaffle}
         className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
@@ -80,8 +88,14 @@ const RaffleButton: React.FC<RaffleButtonProps> = ({
       </button>
       <button
         onClick={() => {
-          callUrl("https://goraisedough.com/cgi-bin/3_display_drawing.cgi");
+          setCountdown(10);
+          setWinningName("");
+          onNewRaffle("000000000");
           setRaffleFinished(false);
+          setTimeout(() => {
+            callUrl("https://goraisedough.com/cgi-bin/3_display_drawing.cgi");
+            setRaffleFinished(false);
+          }, 11500);
         }}
         className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
       >
