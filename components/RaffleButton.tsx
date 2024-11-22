@@ -6,6 +6,8 @@ interface RaffleButtonProps {
   setRaffleFinished: (value: boolean) => void;
   setWinningName: (value: string) => void;
   setCountdown: (value: number) => void;
+  setDoors: (value: boolean) => void;
+  setShowButtons: (value: boolean) => void;
 }
 
 // https://goraisedough.com/cgi-bin/1_reset_drawing.cgi
@@ -18,20 +20,26 @@ const RaffleButton: React.FC<RaffleButtonProps> = ({
   setRaffleFinished,
   setWinningName,
   setCountdown,
+  setDoors,
+  setShowButtons,
 }) => {
   const generateNewRaffle = () => {
-    setCountdown(10);
-    onNewRaffle("000000000");
-    setRaffleFinished(false);
+    setDoors(true);
     setTimeout(() => {
-      const newNumber = Array.from({ length: 9 }, () =>
-        Math.floor(Math.random() * 10)
-      ).join("");
-      console.log("New raffle number:", newNumber);
-      onNewRaffle(newNumber);
-      setWinningName("");
+      setShowButtons(false);
+      setCountdown(3);
+      onNewRaffle("000000000");
       setRaffleFinished(false);
-    }, 11500);
+      setTimeout(() => {
+        const newNumber = Array.from({ length: 9 }, () =>
+          Math.floor(Math.random() * 10)
+        ).join("");
+        console.log("New raffle number:", newNumber);
+        onNewRaffle(newNumber);
+        setWinningName("");
+        setRaffleFinished(false);
+      }, 3500);
+    }, 1000);
   };
 
   const callUrl = async (url: string) => {
@@ -62,14 +70,14 @@ const RaffleButton: React.FC<RaffleButtonProps> = ({
   };
 
   return (
-    <div className="flex flex-col space-y-2 w-96">
-      <button
+    <div className="flex flex-col space-y-2 w-[50%] mb-[6vh]">
+      {/* <button
         onClick={generateNewRaffle}
-        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+        className="px-[5vh] py-[2.5vh] bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors text-[5vh]"
       >
-        Start New Raffle
-      </button>
-      <button
+        Random Raffle
+      </button> */}
+      {/* <button
         onClick={() => {
           callUrl("https://goraisedough.com/cgi-bin/1_reset_drawing.cgi");
           setWinningName("");
@@ -77,29 +85,33 @@ const RaffleButton: React.FC<RaffleButtonProps> = ({
         className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors"
       >
         Reset Drawing
-      </button>
-      <button
+      </button> */}
+      {/* <button
         onClick={() =>
           callUrl("https://goraisedough.com/cgi-bin/2_do_the_drawing.cgi")
         }
         className="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-colors"
       >
         Do Drawing
-      </button>
+      </button> */}
       <button
         onClick={() => {
-          setCountdown(10);
-          setWinningName("");
-          onNewRaffle("000000000");
-          setRaffleFinished(false);
+          setDoors(true);
           setTimeout(() => {
-            callUrl("https://goraisedough.com/cgi-bin/3_display_drawing.cgi");
+            setShowButtons(false);
+            setCountdown(3);
+            setWinningName("");
+            onNewRaffle("000000000");
             setRaffleFinished(false);
-          }, 11500);
+            setTimeout(() => {
+              callUrl("https://goraisedough.com/cgi-bin/3_display_drawing.cgi");
+              setRaffleFinished(false);
+            }, 3500);
+          }, 1000);
         }}
-        className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
+        className="gold-button px-[5vh] py-[2.5vh] text-stone-800 rounded-md text-[5vh] shadow-lg hover:shadow-lg font-semibold"
       >
-        Display Drawing
+        Begin Raffle
       </button>
     </div>
   );

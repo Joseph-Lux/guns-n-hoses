@@ -27,13 +27,7 @@ const WinningNumber: React.FC<WinningNumberProps> = ({
   }, [finalNumber, raffleFinished]);
 
   return (
-    <div
-      className={`flex space-x-2 p-4 bg-white rounded-xl shadow-lg ${
-        countdown > 0
-          ? "opacity-0"
-          : "opacity-100 transition-opacity duration-1000"
-      }`}
-    >
+    <div className={`flex space-x-[2.55vh] p-[4vh] rounded bg-white`}>
       {digits.map((digit, index) => (
         <Digit
           key={index}
@@ -47,7 +41,7 @@ const WinningNumber: React.FC<WinningNumberProps> = ({
               return newFinished;
             });
           }}
-          rotations={finalNumber === "000000000" ? 0 : index * 2 + 2}
+          rotations={finalNumber === "000000000" ? 0 : index + 1}
           finalNumber={parseInt(finalNumber[index])}
           finished={finished[index]}
         />

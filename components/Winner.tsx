@@ -5,12 +5,16 @@ interface WinnerProps {
   winningName: string;
   raffleFinished: boolean;
   countdown: number;
+  showButtons: boolean;
+  doors: boolean;
 }
 
 const Winner: React.FC<WinnerProps> = ({
   winningName,
   raffleFinished,
   countdown,
+  showButtons,
+  doors,
 }) => {
   const [display, setDisplay] = useState(false);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
@@ -33,14 +37,22 @@ const Winner: React.FC<WinnerProps> = ({
   return (
     <>
       {winningName &&
-        display &&
-        (countdown === 0 || countdown === -1) &&
-        raffleFinished && (
-          <div className="mt-4 p-4 bg-yellow-100 border border-yellow-300 rounded-md text-center w-[30%]">
-            <h3 className="text-lg font-semibold">Winner:</h3>
-            <p>{winningName}</p>
-          </div>
-        )}
+      display &&
+      (countdown === 0 || countdown === -1) &&
+      raffleFinished ? (
+        <div
+          className="p-4 mb-[3vh] border-[0.5vh] border-rounded-xl border-yellow-300 rounded-xl text-center text-black w-[60vh]"
+          style={{
+            animation: "winnerGlow 4s infinite, fadeIn 1s ease-out forwards",
+            boxShadow: "0 0 20px rgba(255, 244, 199, 0.5)",
+          }}
+        >
+          <h3 className="text-[3vh] font-semibold">Congratulations!</h3>
+          <p className="font-nikea font-bold text-[7vh]">{winningName}</p>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </>
   );
 };

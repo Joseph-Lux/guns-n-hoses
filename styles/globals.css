@@ -25,3 +25,178 @@ body {
     text-wrap: balance;
   }
 }
+
+.shadow-inner-lg {
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.winner {
+  background: linear-gradient(rgb(255, 242, 129) 24.81%, rgb(255, 213, 66) 77.04%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: rgba(255, 176, 25, 0.6) 0px 0px 8px;
+  font-size: 52px;
+}
+
+.door {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
+  will-change: transform; /* Optimize for animations */
+}
+
+.door-top {
+  top: 0;
+  transform: translateY(-100%);
+  transform-origin: top;
+}
+
+.door-bottom {
+  bottom: 0;
+  transform: translateY(100%);
+  transform-origin: bottom;
+}
+
+.door-closed .door-top {
+  transform: translateY(0);
+}
+
+.door-closed .door-bottom {
+  transform: translateY(0);
+}
+@keyframes pulse-red {
+  0%, 100% {
+    box-shadow: 
+      0 0px 0px rgba(255, 0, 0, 0.5), /* Smaller bottom glow */
+      0 0px 0px rgba(255, 0, 0, 0.5), /* Smaller top glow */
+      0px 0 0px rgba(255, 0, 0, 0.5), /* Smaller left glow */
+      0px 0 0px rgba(255, 0, 0, 0.5); /* Smaller right glow */
+  }
+  50% {
+    box-shadow: 
+      0 0.75vh 2.5vh rgba(255, 0, 0, 1), /* Slightly larger bottom glow */
+      0 -0.75vh 2.5vh rgba(255, 0, 0, 1), /* Slightly larger top glow */
+      -0.75vh 0 2.5vh rgba(255, 0, 0, 1), /* Slightly larger left glow */
+      0.75vh 0 2.5vh rgba(255, 0, 0, 1); /* Slightly larger right glow */
+  }
+}
+
+.glow-red {
+  animation: pulse-red 1.1s infinite; /* Adjust duration as needed */
+}
+
+@keyframes pulse-blue {
+  0%, 100% {
+    box-shadow: 
+      0 0px 0px rgb(15, 67, 255), /* Bottom glow */
+      0 0px 0px rgb(15, 67, 255), /* Left glow */
+      0px 0 0px rgb(15, 67, 255), /* Right glow */
+      0 0 0 rgb(15, 67, 255); /* No top glow */
+  }
+  50% {
+    box-shadow: 
+    0 0.75vh 2.5vh rgb(15, 67, 255), /* Slightly larger bottom glow */
+    0 -0.75vh 2.5vh rgb(15, 67, 255), /* Slightly larger top glow */
+    -0.75vh 0 2.5vh rgb(15, 67, 255), /* Slightly larger left glow */
+    0.75vh 0 2.5vh rgb(15, 67, 255); /* Slightly larger right glow */
+  }
+}
+
+.glow-blue {
+  animation: pulse-blue 1.1s infinite; /* Adjust duration as needed */
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.95;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.95;
+    transform: scale(0.95);
+  }
+}
+
+.container {
+  perspective: 500px; /* Adjust to control the depth */
+}
+
+.rotate-left-left {
+  transform: rotateX(-25deg) rotateY(45deg) rotateZ(20deg);
+}
+
+.rotate-left-right {
+  transform: rotateX(-25deg) rotateY(20deg) rotateZ(15deg) scale(0.60) translateX(-20%) translateY(10%);
+}
+
+.rotate-right-left {
+  transform: rotateX(-25deg) rotateY(-20deg) rotateZ(-15deg) scale(0.60) translateX(15%) translateY(10%);
+}
+
+.rotate-right-right {
+  transform: rotateX(-25deg) rotateY(-45deg) rotateZ(-20deg);
+}
+
+@keyframes yellowToWhite {
+  0%, 100% {
+    background-color: rgb(255, 229, 97); 
+    box-shadow: 0 0 2px 1px rgba(255, 200, 0, 0.7);
+  }
+  50% {
+    background-color: rgb(255, 253, 240);  
+    box-shadow: 0 0 3px 2px rgba(255, 200, 0, 0.9);
+  }
+} 
+
+.raffle-title {
+  font-family: 'Impact', sans-serif; /* or 'Bebas Neue' */
+  font-size: 4rem; /* Adjust as needed */
+  font-weight: bold;
+  display: block;
+}
+
+@keyframes winnerGlow {
+  0%, 100% {
+    background-color: rgb(254 249 195); /* yellow-100 */
+  }
+  50% {
+    background-color: rgb(254 249 210);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.gold-button {
+  background: linear-gradient(to bottom, #fde047 0%, #facc15 50%, #eab308 100%);
+  transition: all 1s ease;
+}
+
+.gold-button:hover {
+
+  transform: scale(1.02);
+}

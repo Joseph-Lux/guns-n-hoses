@@ -8,12 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      gridTemplateColumns: {
+        '30': 'repeat(30, minmax(0, 1fr))',
+        '40': 'repeat(40, minmax(0, 1fr))',
+        '60': 'repeat(60, minmax(0, 1fr))',
       },
+      gridTemplateRows: {
+        '8': 'repeat(8, minmax(0, 1fr))',
+        '12': 'repeat(12, minmax(0, 1fr))',
+      }
     },
   },
   plugins: [],
 };
+
 export default config;

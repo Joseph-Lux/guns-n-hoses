@@ -24,7 +24,7 @@ const DigitCard: React.FC<DigitCardProps> = ({
 
   return (
     <div
-      className={`digit-card absolute w-full h-full flex items-center justify-center text-4xl font-bold ${
+      className={`digit-card absolute w-full h-full flex items-center justify-center text-[11vh] font-bold text-black ${
         position === "top"
           ? "transition-none"
           : "transition-transform duration-300"

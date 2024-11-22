@@ -50,15 +50,15 @@ const Digit: React.FC<DigitProps> = ({
             setFinished(true);
             audio?.play();
           }
-        }, 50); // Duration of the animation
-      }, 75); // Delay between animations
+        }, 30); // Duration of the animation
+      }, 50); // Delay between animations
 
       return () => clearTimeout(timer);
     }
   }, [numbers, rotations, finalNumber, setFinished]);
 
   return (
-    <div className="digit h-20 w-12 relative overflow-hidden">
+    <div className="digit h-[14vh] w-[10.5vh] relative overflow-hidden shadow-inner-lg bg-white rounded-lg">
       <DigitCard number={numbers[2]} position={positions[index % 3]} />
       <DigitCard number={numbers[1]} position={positions[(index + 1) % 3]} />
       <DigitCard number={numbers[0]} position={positions[(index + 2) % 3]} />
