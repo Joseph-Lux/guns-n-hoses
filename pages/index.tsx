@@ -260,7 +260,10 @@ export default function Home() {
                           <div className="h-[32vh] w-[132vh] bg-red-700 p-[1.1vh] rounded">
                             <div className="w-full h-full grid grid-cols-40 grid-rows-8 gap-[0.75vh]">
                               {[...Array(320)].map((_, i) => (
-                                <div className="flex items-center justify-center">
+                                <div
+                                  key={i}
+                                  className="flex items-center justify-center"
+                                >
                                   <div
                                     key={i}
                                     className="w-[1.4vh] aspect-square rounded-full bg-yellow-300"
