@@ -58,10 +58,16 @@ const RaffleButton: React.FC<RaffleButtonProps> = ({
       if (url.includes("3_display_drawing.cgi")) {
         const parts = data.split("|");
         if (parts.length >= 3) {
-          const winningNumber = parts[1].trim();
-          const name = parts[2].trim();
+          const winningNumber = parts[7].trim();
+          const name = parts[9].trim();
+          const [firstName, lastName] = name.split(" ");
+          const formattedName = `${firstName} ${lastName.charAt(0)}.`;
+
+          console.log("Winning number:", winningNumber);
+          console.log("Name:", formattedName);
+
           onNewRaffle(winningNumber);
-          setWinningName(name);
+          setWinningName(formattedName);
         }
       }
     } catch (error) {

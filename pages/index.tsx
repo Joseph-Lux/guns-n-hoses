@@ -66,8 +66,8 @@ export default function Home() {
       </div>
 
       <div
-        className={`absolute top-[30vh] left-[95vh] z-20 bg-white rounded-md px-[5vh] py-[5vh] transition-all duration-500 ease-in-out ${
-          !showButtons || doors ? "-translate-x-[40vh]" : ""
+        className={`absolute top-[30vh] left-[110vh] z-20 bg-white rounded-md px-[5vh] py-[5vh] transition-all duration-500 ease-in-out ${
+          !showButtons || doors ? "-translate-x-[55vh]" : ""
         }`}
       >
         <Image
@@ -81,8 +81,8 @@ export default function Home() {
       </div>
 
       <div
-        className={`absolute top-[30vh] right-[95vh] z-20 bg-white rounded-md p-[2vh] transition-all duration-500 ease-in-out ${
-          !showButtons || doors ? "translate-x-[40vh]" : ""
+        className={`absolute top-[30vh] right-[110vh] z-20 bg-white rounded-md p-[2vh] transition-all duration-500 ease-in-out ${
+          !showButtons || doors ? "translate-x-[55vh]" : ""
         }`}
       >
         <Image
@@ -106,9 +106,9 @@ export default function Home() {
               <Image
                 src="/GNH-art-left.jpg"
                 alt="Guns N Hoses art left"
-                className="w-[73.77vh] h-[100vh]"
-                width={2517}
-                height={3412}
+                className="w-[94vh] h-[100vh]"
+                width={1761}
+                height={1661}
                 objectFit="cover"
               />
 
@@ -116,7 +116,7 @@ export default function Home() {
                 <Image
                   src="/GunsNHosesLogo.jpg"
                   alt="Guns N Hoses"
-                  className="w-[125vh] h-[50vh]"
+                  className="w-[110vh] h-[44vh]"
                   width={862}
                   height={366}
                   objectFit="cover"
@@ -135,9 +135,9 @@ export default function Home() {
               <Image
                 src="/GNH-art-right.jpg"
                 alt="Guns N Hoses art right"
-                className="w-[73.77vh] h-[100vh]"
-                width={2517}
-                height={3412}
+                className="w-[94vh] h-[100vh]"
+                width={1800}
+                height={1700}
                 objectFit="cover"
               />
             </div>
@@ -240,7 +240,7 @@ export default function Home() {
               </div>
 
               {/* Middle Section - Main Content */}
-              <div className="flex-grow flex items-center justify-center">
+              <div className="flex-grow flex items-center justify-center relative">
                 {!showButtons && (
                   <div className="relative flex flex-col w-full items-center z-50">
                     {!doors && (
@@ -291,7 +291,7 @@ export default function Home() {
                 )}
               </div>
               {/* Bottom Section - Floor Light */}
-              <div className="h-[20vh] w-full relative flex items-center justify-center">
+              <div className="h-[20vh] w-full absolute bottom-0 flex items-center justify-center">
                 <div
                   className="h-full w-[180vh]"
                   style={{
