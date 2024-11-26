@@ -50,8 +50,8 @@ const Digit: React.FC<DigitProps> = ({
             setFinished(true);
             audio?.play();
           }
-        }, 30); // Duration of the animation
-      }, 50); // Delay between animations
+        }, 25); // Duration of the animation
+      }, 40); // Delay between animations
 
       return () => clearTimeout(timer);
     }

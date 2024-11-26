@@ -117,7 +117,7 @@ const RaffleButton: React.FC<RaffleButtonProps> = ({
         }}
         className="gold-button px-[5vh] py-[2.5vh] text-stone-800 rounded-md text-[5vh] shadow-lg hover:shadow-lg font-semibold"
       >
-        Begin Raffle
+        Begin Drawing
       </button>
     </div>
   );

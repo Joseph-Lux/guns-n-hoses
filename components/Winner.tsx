@@ -41,17 +41,19 @@ const Winner: React.FC<WinnerProps> = ({
       (countdown === 0 || countdown === -1) &&
       raffleFinished ? (
         <div
-          className="p-4 mb-[3vh] border-[0.5vh] border-rounded-xl border-yellow-300 rounded-xl text-center text-black w-[60vh]"
+          className="p-4 mb-[3vh] border-[0.5vh] border-rounded-xl border-yellow-300 rounded-xl text-center text-black w-[90vh]"
           style={{
             animation: "winnerGlow 4s infinite, fadeIn 1s ease-out forwards",
             boxShadow: "0 0 20px rgba(255, 244, 199, 0.5)",
           }}
         >
-          <h3 className="text-[3vh] font-semibold">Congratulations!</h3>
-          <p className="font-nikea font-bold text-[7vh]">{winningName}</p>
+          <h3 className="text-[5vh] font-semibold">Congratulations!</h3>
+          <p className="font-nikea font-bold text-[9vh]">{winningName}</p>
         </div>
       ) : (
-        <div></div>
+        <div className="p-4 mb-[3vh] text-center text-white font-bold text-[5vh] font-mono">
+          Winning Ticket:
+        </div>
       )}
     </>
   );

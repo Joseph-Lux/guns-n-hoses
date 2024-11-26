@@ -66,9 +66,7 @@ export default function Home() {
       </div>
 
       <div
-        className={`absolute top-[30vh] left-[110vh] z-20 bg-white rounded-md px-[5vh] py-[5vh] transition-all duration-500 ease-in-out ${
-          !showButtons || doors ? "-translate-x-[55vh]" : ""
-        }`}
+        className={`absolute top-[30vh] left-[10vh] z-20 bg-white rounded-md px-[5vh] py-[5vh] transition-all duration-500 ease-in-out`}
       >
         <Image
           src="/text1.svg"
@@ -81,9 +79,7 @@ export default function Home() {
       </div>
 
       <div
-        className={`absolute top-[30vh] right-[110vh] z-20 bg-white rounded-md p-[2vh] transition-all duration-500 ease-in-out ${
-          !showButtons || doors ? "translate-x-[55vh]" : ""
-        }`}
+        className={`absolute top-[30vh] right-[7vh] z-20 bg-white rounded-md p-[2vh] transition-all duration-500 ease-in-out`}
       >
         <Image
           src="/Go_Raise_Dough.jpeg"
@@ -96,50 +92,62 @@ export default function Home() {
       </div>
 
       <div
+        className={`absolute right-[85vh] z-20 rounded-md transition-all duration-500 ease-in-out`}
+      >
+        <Image
+          src="/GNH-art-right.jpg"
+          alt="Guns N Hoses art right"
+          className="w-[94vh] h-[100vh] z-30"
+          width={1800}
+          height={1700}
+          objectFit="cover"
+        />
+      </div>
+
+      <div
+        className={`absolute left-[85vh] z-20 rounded-md transition-all duration-500 ease-in-out`}
+      >
+        <Image
+          src="/GNH-art-left.jpg"
+          alt="Guns N Hoses art left"
+          className="w-[94vh] h-[100vh] z-30"
+          width={1761}
+          height={1661}
+          objectFit="cover"
+        />
+      </div>
+
+      <div
         className={`${
           showButtons ? "bg-white" : "bg-zinc-900"
         } h-full w-full flex flex-col`}
       >
         <div className="flex flex-col h-full">
           {showButtons && (
-            <div className="w-full h-full flex items-center justify-between">
-              <Image
-                src="/GNH-art-left.jpg"
-                alt="Guns N Hoses art left"
-                className="w-[94vh] h-[100vh]"
-                width={1761}
-                height={1661}
-                objectFit="cover"
-              />
-
-              <div className="h-full flex flex-col items-center justify-center p-[1vh] gap-[3vh]">
+            <div className="w-full h-full flex items-center justify-center gap-[30vh]">
+              <div className="h-full flex flex-col items-center justify-center p-[1vh] gap-[3vh] z-10">
                 <Image
                   src="/GunsNHosesLogo.jpg"
                   alt="Guns N Hoses"
-                  className="w-[110vh] h-[44vh]"
+                  className={`w-[110vh] h-[44vh] ${
+                    doors || !showButtons ? "opacity-0" : "opacity-100"
+                  }`}
                   width={862}
                   height={366}
                   objectFit="cover"
                 />
-                <RaffleButton
-                  onNewRaffle={setCurrentNumber}
-                  raffleFinished={raffleFinished}
-                  setRaffleFinished={setRaffleFinished}
-                  setWinningName={setWinningName}
-                  setCountdown={setCountdown}
-                  setDoors={setDoors}
-                  setShowButtons={setShowButtons}
-                />
+                {showButtons && (
+                  <RaffleButton
+                    onNewRaffle={setCurrentNumber}
+                    raffleFinished={raffleFinished}
+                    setRaffleFinished={setRaffleFinished}
+                    setWinningName={setWinningName}
+                    setCountdown={setCountdown}
+                    setDoors={setDoors}
+                    setShowButtons={setShowButtons}
+                  />
+                )}
               </div>
-
-              <Image
-                src="/GNH-art-right.jpg"
-                alt="Guns N Hoses art right"
-                className="w-[94vh] h-[100vh]"
-                width={1800}
-                height={1700}
-                objectFit="cover"
-              />
             </div>
           )}
           {!showButtons && doors && (
@@ -254,7 +262,7 @@ export default function Home() {
                         />
                         <div
                           className={`relative transition-all duration-500 ease-in-out ${
-                            raffleFinished ? "scale-75" : ""
+                            raffleFinished ? "scale-50" : ""
                           }`}
                         >
                           <div className="h-[32vh] w-[132vh] bg-red-700 p-[1.1vh] rounded">
