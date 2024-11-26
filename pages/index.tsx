@@ -66,12 +66,12 @@ export default function Home() {
       </div>
 
       <div
-        className={`absolute top-[30vh] left-[10vh] z-20 bg-white rounded-md px-[5vh] py-[5vh] transition-all duration-500 ease-in-out`}
+        className={`absolute top-[30vh] left-[7vh] z-20 bg-white rounded-md px-[5vh] py-[5vh] transition-all duration-500 ease-in-out flex flex-col items-center justify-center`}
       >
         <Image
-          src="/text1.svg"
+          src="/ukon-sites-logo.png"
           alt="Ukon Logo with Tagline"
-          className="w-[60vh] h-[20vh] z-20"
+          className="w-[65vh] h-[20vh] z-20"
           width={145.675}
           height={40.347755}
           objectFit="cover"
